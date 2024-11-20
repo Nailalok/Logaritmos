@@ -1,2 +1,2 @@
 # Logaritmos
-Uma calculadora de logaritmos para uma compreensão melhor!
+Uma calculadora de logaritmos para uma compreensão melhor dos logs!
