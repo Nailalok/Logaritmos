@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Logaritmo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        h3{
+            font-size: 11pt;
+            position: absolute;
+            bottom: 0;
+            margin: 0;
+        }
+        h2 {
+            
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+        div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: 570;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        input {
+            width: calc(100% - 80px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-weight: 570;
+            background-color: #fafafa;
+            color: #333;
+        }
+        input:focus {
+            outline: none;
+            border: 1px solid #4CAF50;
+            background-color: #ffffff;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .reset-button {
+            background-color: #f44336;
+        }
+        .reset-button:hover {
+            background-color: #e53935;
+        }
+    </style>
+    <script>
+        function calcularLogaritmo() {
+            let base = parseFloat(document.getElementById('base').value);
+            let numero = parseFloat(document.getElementById('numero').value);
+            let resultado = parseFloat(document.getElementById('resultado').value);
+
+            if (isNaN(base)) {
+                if (!isNaN(numero) && !isNaN(resultado)) {
+                    base = Math.pow(numero, 1 / resultado);
+                    document.getElementById('base').value = base;
+                }
+            } else if (isNaN(numero)) {
+                if (!isNaN(base) && !isNaN(resultado)) {
+                    numero = Math.pow(base, resultado);
+                    document.getElementById('numero').value = numero;
+                }
+            } else if (isNaN(resultado)) {
+                if (!isNaN(base) && !isNaN(numero)) {
+                    resultado = Math.log(numero) / Math.log(base);
+                    document.getElementById('resultado').value = resultado;
+                }
+            }
+        }
+
+        function resetField(fieldId) {
+            document.getElementById(fieldId).value = '';
+            
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Calculadora de Log</h2>
+        <div>
+            <label for="base">Base (a): </label>
+            <div class="input-group">
+                <input type="number" id="base" step="any">
+                <button class="reset-button" onclick="resetField('base')">x</button>
+            </div>
+        </div>
+        <div>
+            <label for="numero">Número (x): </label>
+            <div class="input-group">
+                <input type="number" id="numero" step="any">
+                <button class="reset-button" onclick="resetField('numero')">x</button>
+            </div>
+        </div>
+        <div>
+            <label for="resultado">Resultado (log<sub>a</sub>x): </label>
+            <div class="input-group">
+                <input type="number" id="resultado" step="any">
+                <button class="reset-button" onclick="resetField('resultado')">x</button>
+            </div>
+        </div>
+        <button onclick="calcularLogaritmo()">Calcular</button>
+    </div>
+    <h3>Benito/Nailalok_V4</h3>
+</body>
+</html>
